@@ -1,7 +1,7 @@
 import calendar
 
 class Person:
-	def __init__(self, username, age, weight, personalRoutines):
+	def __init__(self, username, age, weight, personalRoutines, workoutHistory):
 		self.username = username
 		self.age = age
 		self.weight = weight
@@ -11,11 +11,13 @@ class Routine:
 	def __init__(self, routineName, exercisesArray, targetReps):
 		self.routineName = routineName
 		self.exercisesArray = exercisesArray
-		self.repsArray = repsArray
+		self.targetReps = targetReps
 		# not user friendly, fix this
 	
 	# ADD FUNCTION def editReps
 	# ADD FUNCTION def addExercise
+	def addExercise (self,exercisesArray,targetReps, newExercise, newReps):
+                
 
 '''
 # -------------------------- Testing for Routine Class --------------------------
