@@ -8,15 +8,36 @@ class Person:
 		self.personalRoutines = personalRoutines
 
 class Routine:
-	def __init__(self, routineName, exercisesArray, targetReps):
+	def __init__(self, routineName, exercisesArray, targetReps, targetSets):
 		self.routineName = routineName
 		self.exercisesArray = exercisesArray
 		self.targetReps = targetReps
+		self.targetSets = targetSets
 		# not user friendly, fix this
 	
 	# ADD FUNCTION def editReps
 	# ADD FUNCTION def addExercise
-	def addExercise (self,exercisesArray,targetReps, newExercise, newReps):
+	def addExercise (self, newExercise, newReps, newSets):
+                self.exercisesArray.append(newExercise)
+                self.targetReps.append(newReps)
+                self.targetSets.append(newSets)
+
+pushRoutine = Routine("Push", ["Pushups", "Bench", "Shoulder Press"], [10, 8, 5], [3, 3, 3])
+print(pushRoutine.routineName)
+print(pushRoutine.exercisesArray)
+print(pushRoutine.targetReps)
+print(pushRoutine.targetSets)
+
+
+print("----------------------------------")
+
+pushRoutine.addExercise("Dips", 10, 4)
+print(pushRoutine.exercisesArray)
+print(pushRoutine.targetReps)
+print(pushRoutine.targetSets)
+
+
+
                 
 
 '''
