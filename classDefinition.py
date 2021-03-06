@@ -2,75 +2,141 @@ import datetime
 # ADD ACCESSORS FOR ALL CLASSES AND ALL PARAMETERS
 
 class Person:
-    def __init__(self, username, age, weight, personalRoutines, workoutHistory):
-        self.username = username
-        self.age = age
-        self.weight = weight
-        self.personalRoutines = personalRoutines
+	def __init__(self, username, age, weight, personalRoutines, workoutHistoryArray):
+		self.username = username
+		self.age = age
+		self.weight = weight
+		self.personalRoutines = personalRoutines
+		self.workoutHistoryArray = []
 
-    def getAge(self):
-        return self.age
+	# Accessors
+	def getUsername(self):
+		return self.username
 
-    # ADD METHOD TO ADD WORKOUT SESSION
-    # ADD METHOD TO DELETE SESSION
+	def getAge(self):
+		return self.age
+
+	def getWeight(self):
+		return self.weight
+
+	def getPersonalRoutines(self):
+		return self.personalRoutines
+
+	def getworkoutHistoryArray(self):
+		return self.workoutHistoryArray
+
+	# Mutators
+	
+	# Might need to call the constructor of the workoutSession class to actually create a workoutSession object that gets added to the workoutHistoryArray
+	def addWorkoutSession(self, addedSession):
+		self.workoutHistoryArray.append(addedSession)
+
+	# Assumed that only workoutSession is entered per day and a session can be referenced by a specific date
+	def deleteWorkoutSession(self, deletedSessionYear, deletedSessionMonth, deletedSessionDayOfMonth):
+		isDeletionComplete = False
+
+		for session in self.workoutHistoryArray:
+			deletedDate = datetime.datetime(deletedSessionYear, deletedSessionMonth, deletedSessionDayOfMonth)
+			if(session.date == deletedDate):
+				self.workoutHistoryArray.remove(session)
+				isDeletionComplete = True
+		
+		if(isDeletionComplete == False):
+			print("No workout session with this date could be found")
 
 class workoutSession:
-    def __init__(self, year, month, date, routine, note):
-        self.date = datetime.datetime(year, month, date)
-        self.routine = routine
-        self.note = note
+	def __init__(self, year, month, dayOfMonth, routine, note):
+		self.date = datetime.datetime(year, month, dayOfMonth)
+		self.routine = routine
+		self.note = note
 
-    # ADD METHOD TO EDIT DATE, NOTE_,
+	# Accessors
+	def getDate(self):
+		return self.date
+
+	def getRoutine(self):
+		return self.routine
+
+	def getNote(self):
+		return self.note
+
+	# Mutators
+	def editDate(self, updatedYear, updatedMonth, updatedDayOfMonth):
+		self.date = datetime.datetime(updatedYear, updatedMonth, updatedDayOfMonth)
+	
+	def editNote(self, updatedNote):
+		self.note = updatedNote
 
 class Routine:
-    def __init__(self, routineName, exercisesArray, targetReps, targetSets):
-        self.routineName = routineName
-        self.exercisesArray = exercisesArray
-        self.targetReps = targetReps
-        self.targetSets = targetSets
-        # not user friendly, fix this
+	def __init__(self, routineName, exercisesArray, targetRepsArray, targetSetsArray):
+		self.routineName = routineName
+		self.exercisesArray = exercisesArray
+		self.targetRepsArray = targetRepsArray
+		self.targetSetsArray = targetSetsArray
+		# not user friendly way to initiate with , fix this
 
-    # ADD FUNCTION def edit targetReps
-    # ADD FUNCTION def edit targetSets
-    # ADD FUNCTION def delete exercise
-    # ADD FUNCTION edit routineName
-    def addExercise (self, newExercise, newReps, newSets):
-                self.exercisesArray.append(newExercise)
-                self.targetReps.append(newReps)
-                self.targetSets.append(newSets)
+	# Accessors
+	def getRoutineName(self):
+		return self.routineName
 
-    def deleteExercise(self, newExercise, newReps, newSets):
-                self.exercisesArray.remove(newExercise)
-                self.targetReps.remove(newReps)
-                self.targetSets.remove(newSets)
+	def getExercisesArray(self):
+		return self.exercisesArray
+
+	def gettargetRepsArray(self):
+		return self.targetRepsArray
+
+	def gettargetSetsArray(self):
+		return self.targetSetsArray
+
+	# Mutators
+	def edittargetRepsArray(self, updatedtargetRepsArray):
+		self.targetRepsArray = updatedtargetRepsArray
+	
+	def edittargetSetsArray(self, updatedtargetSetsArray):
+		self.targetSetsArray = updatedtargetSetsArray
+
+	def editRoutineName(self, updatedRoutineName):
+		self.routineName = updatedRoutineName
+
+	def addExercise (self, newExercise, newReps, newSets):
+		self.exercisesArray.append(newExercise)
+		self.targetRepsArray.append(newReps)
+		self.targetSetsArray.append(newSets)
+
+	def deleteExercise(self, targetRoutine, deletedExercise):
+		deletedIndex = targetRoutine.exercisesArray.index(deletedExercise)
+
+		targetRoutine.exercisesArray.pop(deletedIndex)
+		targetRoutine.targetRepsArray.pop(deletedIndex)
+		targetRoutine.targetSetsArray.pop(deletedIndex)
 
 # -------------------------- Testing for Routine Class --------------------------
 # ------------------------------------------------------------------------------
 pushRoutine = Routine("Push", ["Push Ups", "Bench Press", "Shoulder Press"], [25, 8, 5], [3, 3, 3])
 # print(pushRoutine.routineName)
 # print(pushRoutine.exercisesArray)
-# print(pushRoutine.targetReps)
-# print(pushRoutine.targetSets)
+# print(pushRoutine.targetRepsArray)
+# print(pushRoutine.targetSetsArray)
 
 pullRoutine = Routine("Pull", ["Pull Ups", "Deadlifts", "Bicep Curls"], [10, 8, 16], [4, 4, 4])
 # print(pullRoutine.routineName)
 # print(pullRoutine.exercisesArray)
-# print(pullRoutine.targetReps)
-# print(pushRoutine.targetSets)
+# print(pullRoutine.targetRepsArray)
+# print(pushRoutine.targetSetsArray)
 
 legsRoutine = Routine("Legs", ["Squats", "Lunges", "Glute Bridges"], [30, 10, 6], [5, 5, 5])
 # print(legsRoutine.routineName)
 # print(legsRoutine.exercisesArray)
-# print(legsRoutine.targetReps)
-# print(pushRoutine.targetSets)
+# print(legsRoutine.targetRepsArray)
+# print(pushRoutine.targetSetsArray)
 
 # -------------------------- Testing for addExercise Method --------------------------
 # ------------------------------------------------------------------------------
 pushRoutine.addExercise("Dips", 10, 4)
 pushRoutine.deleteExercise("Dips", 10, 4)
 print(pushRoutine.exercisesArray)
-print(pushRoutine.targetReps)
-print(pushRoutine.targetSets)
+print(pushRoutine.targetRepsArray)
+print(pushRoutine.targetSetsArray)
 
 
 # -------------------------- Testing for Person Class --------------------------
@@ -81,13 +147,13 @@ print(testUser.age)
 print(testUser.weight)
 print(testUser.personalRoutines[0].routineName)
 print(testUser.personalRoutines[0].exercisesArray)
-print(testUser.personalRoutines[0].targetReps)
+print(testUser.personalRoutines[0].targetRepsArray)
 print(testUser.personalRoutines[1].routineName)
 print(testUser.personalRoutines[1].exercisesArray)
-print(testUser.personalRoutines[1].targetReps)
+print(testUser.personalRoutines[1].targetRepsArray)
 print(testUser.personalRoutines[2].routineName)
 print(testUser.personalRoutines[2].exercisesArray)
-print(testUser.personalRoutines[2].targetReps)
+print(testUser.personalRoutines[2].targetRepsArray)
 
 # -------------------------- Testing for workoutSession Class --------------------------
 # ------------------------------------------------------------------------------
