@@ -1,14 +1,8 @@
-import calendar
-
+#import calendar
+'''
 class workoutSession:
-	def __init__(self, calendar.date, personalRoutine, 
-
-class Routine:
-	def __init__(self, routineName, exercisesArray, repsArray):
-		self.routineName = routineName
-		self.exercisesArray = exercisesArray
-		self.repsArray = repsArray
-
+	def __init__(self, calendar.date, Routine, 
+'''
 class Person:
 	def __init__(self, username, age, weight, personalRoutines):
 		self.username = username
@@ -16,22 +10,46 @@ class Person:
 		self.weight = weight
 		self.personalRoutines = personalRoutines
 	
-	def createPersonalRoutines():
+	#def createRoutine():
 
-testUser = Person("MrKanister12", 20, 140, [ ["Pull", ["Pull Ups", "Deadlift"]], ["Push", ["Benchpress", "Pushups"]], ["Legs", ["Squats", "Lunges"]] ])
+class Routine:
+	def __init__(self, routineName, exercisesArray, repsArray):
+		self.routineName = routineName
+		self.exercisesArray = exercisesArray
+		self.repsArray = repsArray
+		# not user friendly, fix this
+
+'''
+# -------------------------- Testing for Routine Class --------------------------
+# ------------------------------------------------------------------------------
+pushRoutine = Routine("Push", ["Push Ups", "Bench Press", "Shoulder Press"], [25, 8, 5])
+# print(pushRoutine.routineName)
+# print(pushRoutine.exercisesArray)
+# print(pushRoutine.repsArray)
+
+pullRoutine = Routine("Pull", ["Pull Ups", "Deadlifts", "Bicep Curls"], [10, 8, 16])
+# print(pullRoutine.routineName)
+# print(pullRoutine.exercisesArray)
+# print(pullRoutine.repsArray)
+
+legsRoutine = Routine("Legs", ["Squats", "Lunges", "Glute Bridges"], [30, 10, 6])
+# print(legsRoutine.routineName)
+# print(legsRoutine.exercisesArray)
+# print(legsRoutine.repsArray)
+
+# -------------------------- Testing for Person Class --------------------------
+# ------------------------------------------------------------------------------
+testUser = Person("MrKanister12", 20, 140, [pushRoutine, pullRoutine, legsRoutine])
 print(testUser.username)
 print(testUser.age)
 print(testUser.weight)
-print(testUser.personalRoutines)
-print(testUser.personalRoutines[0])
-print(testUser.personalRoutines[1])
-print(testUser.personalRoutines[2])
-
-testUser = fitnessUser("MrKanister12", 20, 140, [ ["Pull", ["Pull Ups", "Deadlift"]], ["Push", ["Benchpress", "Pushups"]], ["Legs", ["Squats", "Lunges"]] ])
-print(testUser.username)
-print(testUser.age)
-print(testUser.weight)
-print(testUser.personalRoutines)
-print(testUser.personalRoutines[0])
-print(testUser.personalRoutines[1])
-print(testUser.personalRoutines[2])
+print(testUser.personalRoutines[0].routineName)
+print(testUser.personalRoutines[0].exercisesArray)
+print(testUser.personalRoutines[0].repsArray)
+print(testUser.personalRoutines[1].routineName)
+print(testUser.personalRoutines[1].exercisesArray)
+print(testUser.personalRoutines[1].repsArray)
+print(testUser.personalRoutines[2].routineName)
+print(testUser.personalRoutines[2].exercisesArray)
+print(testUser.personalRoutines[2].repsArray)
+'''
