@@ -1,23 +1,21 @@
-#import calendar
-'''
-class workoutSession:
-	def __init__(self, calendar.date, Routine, 
-'''
+import calendar
+
 class Person:
 	def __init__(self, username, age, weight, personalRoutines):
 		self.username = username
 		self.age = age
 		self.weight = weight
 		self.personalRoutines = personalRoutines
-	
-	#def createRoutine():
 
 class Routine:
-	def __init__(self, routineName, exercisesArray, repsArray):
+	def __init__(self, routineName, exercisesArray, targetReps):
 		self.routineName = routineName
 		self.exercisesArray = exercisesArray
 		self.repsArray = repsArray
 		# not user friendly, fix this
+	
+	# ADD FUNCTION def editReps
+	# ADD FUNCTION def addExercise
 
 '''
 # -------------------------- Testing for Routine Class --------------------------
@@ -25,17 +23,17 @@ class Routine:
 pushRoutine = Routine("Push", ["Push Ups", "Bench Press", "Shoulder Press"], [25, 8, 5])
 # print(pushRoutine.routineName)
 # print(pushRoutine.exercisesArray)
-# print(pushRoutine.repsArray)
+# print(pushRoutine.targetReps)
 
 pullRoutine = Routine("Pull", ["Pull Ups", "Deadlifts", "Bicep Curls"], [10, 8, 16])
 # print(pullRoutine.routineName)
 # print(pullRoutine.exercisesArray)
-# print(pullRoutine.repsArray)
+# print(pullRoutine.targetReps)
 
 legsRoutine = Routine("Legs", ["Squats", "Lunges", "Glute Bridges"], [30, 10, 6])
 # print(legsRoutine.routineName)
 # print(legsRoutine.exercisesArray)
-# print(legsRoutine.repsArray)
+# print(legsRoutine.targetReps)
 
 # -------------------------- Testing for Person Class --------------------------
 # ------------------------------------------------------------------------------
@@ -45,11 +43,11 @@ print(testUser.age)
 print(testUser.weight)
 print(testUser.personalRoutines[0].routineName)
 print(testUser.personalRoutines[0].exercisesArray)
-print(testUser.personalRoutines[0].repsArray)
+print(testUser.personalRoutines[0].targetReps)
 print(testUser.personalRoutines[1].routineName)
 print(testUser.personalRoutines[1].exercisesArray)
-print(testUser.personalRoutines[1].repsArray)
+print(testUser.personalRoutines[1].targetReps)
 print(testUser.personalRoutines[2].routineName)
 print(testUser.personalRoutines[2].exercisesArray)
-print(testUser.personalRoutines[2].repsArray)
+print(testUser.personalRoutines[2].targetReps)
 '''
