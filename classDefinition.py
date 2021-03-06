@@ -2,45 +2,47 @@ import datetime
 # ADD ACCESSORS FOR ALL CLASSES AND ALL PARAMETERS
 
 class Person:
-	def __init__(self, username, age, weight, personalRoutines, workoutHistory):
-		self.username = username
-		self.age = age
-		self.weight = weight
-		self.personalRoutines = personalRoutines
+    def __init__(self, username, age, weight, personalRoutines, workoutHistory):
+        self.username = username
+        self.age = age
+        self.weight = weight
+        self.personalRoutines = personalRoutines
 
-	def getAge(self):
-		return self.age
+    def getAge(self):
+        return self.age
 
-	# ADD METHOD TO ADD WORKOUT SESSION
-	# ADD METHOD TO DELETE SESSION
+    # ADD METHOD TO ADD WORKOUT SESSION
+    # ADD METHOD TO DELETE SESSION
 
 class workoutSession:
-	def __init__(self, year, month, date, routine, note):
-		self.date = datetime.datetime(year, month, date)
-		self.routine = routine
-		self.note = note
+    def __init__(self, year, month, date, routine, note):
+        self.date = datetime.datetime(year, month, date)
+        self.routine = routine
+        self.note = note
 
-	# ADD METHOD TO EDIT DATE, NOTE_,
+    # ADD METHOD TO EDIT DATE, NOTE_,
 
 class Routine:
-	def __init__(self, routineName, exercisesArray, targetReps, targetSets):
-		self.routineName = routineName
-		self.exercisesArray = exercisesArray
-		self.targetReps = targetReps
-		self.targetSets = targetSets
-		# not user friendly, fix this
-	
-	# ADD FUNCTION def edit targetReps
-	# ADD FUNCTION def edit targetSets
-	# ADD FUNCTION def delete exercise
-	# ADD FUNCTION edit routineName
-	def addExercise (self, newExercise, newReps, newSets):
+    def __init__(self, routineName, exercisesArray, targetReps, targetSets):
+        self.routineName = routineName
+        self.exercisesArray = exercisesArray
+        self.targetReps = targetReps
+        self.targetSets = targetSets
+        # not user friendly, fix this
+
+    # ADD FUNCTION def edit targetReps
+    # ADD FUNCTION def edit targetSets
+    # ADD FUNCTION def delete exercise
+    # ADD FUNCTION edit routineName
+    def addExercise (self, newExercise, newReps, newSets):
                 self.exercisesArray.append(newExercise)
                 self.targetReps.append(newReps)
                 self.targetSets.append(newSets)
-#hello
 
-
+    def deleteExercise(self, newExercise, newReps, newSets):
+                self.exercisesArray.remove(newExercise)
+                self.targetReps.remove(newReps)
+                self.targetSets.remove(newSets)
 
 # -------------------------- Testing for Routine Class --------------------------
 # ------------------------------------------------------------------------------
@@ -65,9 +67,11 @@ legsRoutine = Routine("Legs", ["Squats", "Lunges", "Glute Bridges"], [30, 10, 6]
 # -------------------------- Testing for addExercise Method --------------------------
 # ------------------------------------------------------------------------------
 pushRoutine.addExercise("Dips", 10, 4)
+pushRoutine.deleteExercise("Dips", 10, 4)
 print(pushRoutine.exercisesArray)
 print(pushRoutine.targetReps)
 print(pushRoutine.targetSets)
+
 
 # -------------------------- Testing for Person Class --------------------------
 # ------------------------------------------------------------------------------
