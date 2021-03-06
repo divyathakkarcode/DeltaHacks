@@ -38,6 +38,7 @@ class Routine:
                 self.exercisesArray.append(newExercise)
                 self.targetReps.append(newReps)
                 self.targetSets.append(newSets)
+#hello
 
 
 
