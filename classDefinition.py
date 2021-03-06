@@ -28,6 +28,7 @@ class Person:
 	# Mutators
 	
 	# Might need to call the constructor of the workoutSession class to actually create a workoutSession object that gets added to the workoutHistoryArray
+	# On second thought, this should be fine since we can call constructor of workoutSession then add that addedSession to a user's workoutHistoryArray
 	def addWorkoutSession(self, addedSession):
 		self.workoutHistoryArray.append(addedSession)
 
@@ -73,7 +74,7 @@ class Routine:
 		self.exercisesArray = exercisesArray
 		self.targetRepsArray = targetRepsArray
 		self.targetSetsArray = targetSetsArray
-		# not user friendly way to initiate with , fix this
+		# not user friendly way to initiate with, maybe use a 3D array or a dictionary if it makes things easier
 
 	# Accessors
 	def getRoutineName(self):
@@ -99,12 +100,19 @@ class Routine:
 		self.routineName = updatedRoutineName
 
 	def addExercise (self, newExercise, newReps, newSets):
-		self.exercisesArray.append(newExercise)
-		self.targetRepsArray.append(newReps)
-		self.targetSetsArray.append(newSets)
+		
+		if newExercise not in self.exercisesArray:
+			self.exercisesArray.append(newExercise)
+			self.targetRepsArray.append(newReps)
+			self.targetSetsArray.append(newSets)
+		else:
+			print("This exercise already exists within the routine")
 
 	def deleteExercise(self, targetRoutine, deletedExercise):
-		deletedIndex = targetRoutine.exercisesArray.index(deletedExercise)
+		try:
+			deletedIndex = targetRoutine.exercisesArray.index(deletedExercise)
+		except ValueError:
+			print("This exercise is not in the routine")
 
 		targetRoutine.exercisesArray.pop(deletedIndex)
 		targetRoutine.targetRepsArray.pop(deletedIndex)
