@@ -1,5 +1,4 @@
 import datetime
-# ADD ACCESSORS FOR ALL CLASSES AND ALL PARAMETERS
 
 class Person:
 	def __init__(self, username, age, weight, personalRoutines, workoutHistoryArray):
@@ -27,12 +26,35 @@ class Person:
 
 	# Mutators
 	
+	def editUsername(self, updatedUsername):
+		self.username = updatedUsername
+
+	def editAge(self, updatedAge):
+		self.age = updatedAge
+
+	def editWeight(self, updatedWeight);
+		self.weight = updatedWeight
+
+	def addPersonalRoutine(self, addedRoutine):
+		self.personalRoutines.append(addedRoutine)
+
+	def deletePersonalRoutine(self, deletedRoutineName):
+		isDeletionComplete = False
+
+		for routine in self.personalRoutines:
+			if(routine.routineName == deletedRoutineName):
+				self.personalRoutines.remove(routine)
+				isDeletionComplete = True
+		
+		if(isDeletionComplete == False):
+			print("This routine could not be found and was not deleted")
+
 	# Might need to call the constructor of the workoutSession class to actually create a workoutSession object that gets added to the workoutHistoryArray
 	# On second thought, this should be fine since we can call constructor of workoutSession then add that addedSession to a user's workoutHistoryArray
 	def addWorkoutSession(self, addedSession):
 		self.workoutHistoryArray.append(addedSession)
 
-	# Assumed that only workoutSession is entered per day and a session can be referenced by a specific date
+	# Assumed that only one workoutSession is entered per day and a session can be referenced by a specific date
 	def deleteWorkoutSession(self, deletedSessionYear, deletedSessionMonth, deletedSessionDayOfMonth):
 		isDeletionComplete = False
 
@@ -43,7 +65,7 @@ class Person:
 				isDeletionComplete = True
 		
 		if(isDeletionComplete == False):
-			print("No workout session with this date could be found")
+			print("No workout session with this date could be found and no deletion occured")
 
 class workoutSession:
 	def __init__(self, year, month, dayOfMonth, routine, note):
@@ -118,6 +140,24 @@ class Routine:
 		targetRoutine.targetRepsArray.pop(deletedIndex)
 		targetRoutine.targetSetsArray.pop(deletedIndex)
 
+# -------------------------- Testing for Person Class --------------------------
+# ------------------------------------------------------------------------------
+testUser = Person("MrKanister12", 20, 140, [pushRoutine, pullRoutine, legsRoutine], [])
+print(testUser.username)
+print(testUser.age)
+print(testUser.weight)
+print(testUser.personalRoutines[0].routineName)
+print(testUser.personalRoutines[0].exercisesArray)
+print(testUser.personalRoutines[0].targetRepsArray)
+print(testUser.personalRoutines[1].routineName)
+print(testUser.personalRoutines[1].exercisesArray)
+print(testUser.personalRoutines[1].targetRepsArray)
+print(testUser.personalRoutines[2].routineName)
+print(testUser.personalRoutines[2].exercisesArray)
+print(testUser.personalRoutines[2].targetRepsArray)
+
+
+
 # -------------------------- Testing for Routine Class --------------------------
 # ------------------------------------------------------------------------------
 pushRoutine = Routine("Push", ["Push Ups", "Bench Press", "Shoulder Press"], [25, 8, 5], [3, 3, 3])
@@ -147,21 +187,7 @@ print(pushRoutine.targetRepsArray)
 print(pushRoutine.targetSetsArray)
 
 
-# -------------------------- Testing for Person Class --------------------------
-# ------------------------------------------------------------------------------
-testUser = Person("MrKanister12", 20, 140, [pushRoutine, pullRoutine, legsRoutine], [])
-print(testUser.username)
-print(testUser.age)
-print(testUser.weight)
-print(testUser.personalRoutines[0].routineName)
-print(testUser.personalRoutines[0].exercisesArray)
-print(testUser.personalRoutines[0].targetRepsArray)
-print(testUser.personalRoutines[1].routineName)
-print(testUser.personalRoutines[1].exercisesArray)
-print(testUser.personalRoutines[1].targetRepsArray)
-print(testUser.personalRoutines[2].routineName)
-print(testUser.personalRoutines[2].exercisesArray)
-print(testUser.personalRoutines[2].targetRepsArray)
+
 
 # -------------------------- Testing for workoutSession Class --------------------------
 # ------------------------------------------------------------------------------
